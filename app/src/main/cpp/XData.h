@@ -6,8 +6,10 @@
 #define MYMEDIAPLAYER_XDATA_H
 
 
-class XData {
-
+struct XData{
+    unsigned char *data = nullptr; //存放读取的packet数据
+    int size =0; //数据大小
+    void Drop();
 };
 
 

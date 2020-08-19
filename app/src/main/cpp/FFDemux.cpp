@@ -70,7 +70,8 @@ XData FFDemux::Read() {
         av_packet_free(&avPacket);
         return XData();
     }
-    XLOGI("packet size is %d , pts: %lld",avPacket->size,avPacket->pts);
-
+//    XLOGI("packet size is %d , pts: %lld",avPacket->size,avPacket->pts);
+    d.data = (unsigned char*)avPacket;
+    d.size = avPacket->size;
     return d;
 }

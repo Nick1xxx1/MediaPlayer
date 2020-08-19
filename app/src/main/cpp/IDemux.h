@@ -5,9 +5,12 @@
 #ifndef MYMEDIAPLAYER_IDEMUX_H
 #define MYMEDIAPLAYER_IDEMUX_H
 
-class XData;
+#include "XThread.h"
+#include "IObserver.h"
+
+struct XData;
 //解封装接口类
-class IDemux {
+class IDemux : public IObserver {
 public:
     //打开文件或者流媒体 rtmp http rtsp
     virtual bool Open(const char *url) = 0;
@@ -17,6 +20,8 @@ public:
 
     //总时长（毫秒）
     int totalMs = 0;
+protected:
+    void Main() override;
 };
 
 

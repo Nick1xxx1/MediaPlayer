@@ -27,6 +27,7 @@ set_target_properties(swscale PROPERTIES IMPORTED_LOCATION ${FF}/libswscale.so)
 # You can define multiple libraries, and CMake builds them for you.
 # Gradle automatically packages shared libraries with your APK.
 
+aux_source_directory(${CMAKE_CURRENT_SOURCE_DIR} DIR_SRCS)
 add_library( # Sets the name of the library.
              native-lib
 
@@ -35,10 +36,7 @@ add_library( # Sets the name of the library.
 
              # Provides a relative path to your source file(s).
              native-lib.cpp
-        IDemux.cpp
-        FFDemux.cpp
-        XData.cpp
-        XLog.cpp
+        ${DIR_SRCS}
         )
 
 # Searches for a specified prebuilt library and stores the path as a
