@@ -75,3 +75,20 @@ XData FFDemux::Read() {
     d.size = avPacket->size;
     return d;
 }
+
+XParameter FFDemux::getVideoParam() {
+    if(!ic) {
+        XLOGE("ic is NULL,getVideoParam failed");
+        return XParameter();
+    }
+
+    //获取视频流索引
+    int ret = av_find_best_stream(ic,AVMEDIA_TYPE_VIDEO,-1,-1,0,0);
+    if(ret<0) {
+        XLOGE("av_find_best_stream failed");
+        return XParameter();
+    }
+    XParameter param;
+    param.param = ic->streams[ret]->codecpar;
+    return param;
+}

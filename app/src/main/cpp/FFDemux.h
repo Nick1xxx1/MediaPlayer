@@ -14,7 +14,7 @@ public:
     FFDemux();
     virtual bool Open(const char *url);
     virtual XData Read();
-
+    virtual XParameter getVideoParam();
 private:
     AVFormatContext *ic = nullptr;
 };
